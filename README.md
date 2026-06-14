@@ -20,8 +20,8 @@ JWT Authentication
 // LOCAL SETUP
 1. Clone repository
 ```bash
-git clone https://github.com/username/repo-name.git
-cd repo-name
+git https://github.com/mutiaraaisyshofi/CAMPUS-FACILITY-MAINTENANCE_API.git
+cd CAMPUS-FACILITY-MAINTENANCE_API
 
 
 

@@ -1,0 +1,79 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL") 
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  role      String
+  createdAt DateTime @default(now())
+
+  reports         Report[]
+  maintenanceLogs MaintenanceLog[]
+}
+
+model Category {
+  id         Int        @id @default(autoincrement())
+  name       String
+
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime @default(now()) @updatedAt
+
+  facilities Facility[]
+}
+
+model Facility {
+  id         Int        @id @default(autoincrement())
+  name       String
+  location   String
+  categoryId Int
+
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime @default(now()) @updatedAt
+
+  category Category @relation(fields: [categoryId], references: [id])
+
+  reports Report[]
+}
+
+model Report {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  status      String
+  createdAt   DateTime @default(now())
+
+  userId     Int
+  facilityId Int
+
+  user     User     @relation(fields: [userId], references: [id])
+  facility Facility @relation(fields: [facilityId], references: [id])
+
+  maintenanceLogs MaintenanceLog[]
+}
+
+model MaintenanceLog {
+  id           Int      @id @default(autoincrement())
+  notes        String
+  repairDate   DateTime
+  createdAt    DateTime @default(now())
+
+  reportId     Int
+  technicianId Int
+
+  report     Report @relation(fields: [reportId], references: [id])
+  technician User   @relation(fields: [technicianId], references: [id])
+}

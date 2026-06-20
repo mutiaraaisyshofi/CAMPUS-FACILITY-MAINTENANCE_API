@@ -53,11 +53,14 @@ model Report {
   id          Int      @id @default(autoincrement())
   title       String
   description String
-  status      String
-  createdAt   DateTime @default(now())
 
-  userId     Int
-  facilityId Int
+  status      String   @default("PENDING")
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
+
+  userId      Int
+  facilityId  Int
 
   user     User     @relation(fields: [userId], references: [id])
   facility Facility @relation(fields: [facilityId], references: [id])

@@ -12,7 +12,8 @@ const options = {
 
     servers: [
       {
-        url: "http://localhost:3000",
+        url: "https://facility-maintenance-api-production.up.railway.app",
+        description: "Production Server",
       },
     ],
 

@@ -23,10 +23,10 @@ const authController = require("../controllers/authController");
  *             properties:
  *               name:
  *                 type: string
- *                 example: Mutiara Aisy Shofi
+ *                 example: Milea Lucyanna
  *               email:
  *                 type: string
- *                 example: mutiara@student.com
+ *                 example: student.milealucyanna@unand.ac.id
  *               password:
  *                 type: string
  *                 example: password123

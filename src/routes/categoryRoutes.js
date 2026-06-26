@@ -24,7 +24,7 @@ const categoryController = require("../controllers/categoryController");
  *             properties:
  *               name:
  *                 type: string
- *                 example: Ruang Kelas
+ *                 example: Gudang
  *     responses:
  *       201:
  *         description: Kategori berhasil dibuat

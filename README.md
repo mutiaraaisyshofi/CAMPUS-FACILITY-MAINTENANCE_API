@@ -1,24 +1,170 @@
 CAMPUS FACILITY MAINTENANCE MANAGEMENT API
 (Sistem Pelaporan dan Penanganan Kerusakan Fasilitas Kampus)
 
-// DEKSRIPSI
-Campus Facility Maintenance Management API adalah sebuah sistem backend untuk pengelolaan pelaporan dan penanganan kerusakan fasilitas kampus secara terstruktur dan berbasis role. Sistem ini dirancang untuk mempermudah proses monitoring, pelaporan, serta tindak lanjut perbaikan fasilitas kampus agar lebih efisien, transparan, dan terdokumentasi dengan baik.
 
-Dalam sistem ini terdapat tiga jenis role, yaitu student, staff, dan admin, yang masing-masing memiliki hak akses dan tanggung jawab berbeda. Student dapat melakukan registrasi, login, melihat daftar fasilitas kampus, serta membuat laporan kerusakan yang akan tersimpan dengan status awal pending. Staff bertugas untuk memproses laporan yang masuk dengan mengubah status menjadi in progress, melakukan tindakan perbaikan, serta menambahkan catatan perbaikan hingga laporan dinyatakan completed. Sementara itu, admin memiliki kontrol penuh untuk mengelola data master seperti kategori fasilitas, data fasilitas kampus, serta akun staff.
+# DEKSRIPSI PROYEK
+Campus Facility Maintenance Management API adalah sistem backend untuk pengelolaan pelaporan dan penanganan kerusakan fasilitas kampus secara terstruktur dan berbasis role. Sistem ini dirancang untuk mempermudah proses monitoring, pelaporan, serta tindak lanjut perbaikan fasilitas kampus agar lebih efisien, transparan, dan terdokumentasi dengan baik.
 
-Alur kerja sistem dimulai dari student yang membuat laporan kerusakan fasilitas. Laporan tersebut kemudian diproses oleh staff melalui beberapa tahap status hingga selesai diperbaiki. Seluruh proses perbaikan dicatat dalam maintenance log untuk memastikan setiap tindakan terdokumentasi dengan jelas. Sistem ini juga mendukung relasi antar data seperti users, facilities, reports, categories, dan maintenance_logs untuk menjaga integritas dan keterkaitan informasi.
+Dalam sistem ini terdapat tiga jenis role, yaitu student, staff, dan admin, yang masing-masing memiliki hak akses berbeda. 
 
-Dengan sistem ini, API mendukung pengelolaan data fasilitas kampus yang lebih rapi, terpusat, dan mudah dikembangkan lebih lanjut sebagai sistem manajemen fasilitas berskala lebih besar.
+1. Student 
+- Register
+- Login
+- Melihat daftar fasilitas
+- Membuat laporan kerusakan
+- Melihat laporan milik sendiri
 
-// TECH STACK
-Node.js
-Express.js
-Prisma ORM
-MySQL
-JWT Authentication
+2. Staff
+- Login
+- Melihat seluruh laporan
+- Mengubah status laporan
+- Menambahkan catatan perbaikan
 
-// LOCAL SETUP
-1. Clone repository
+3. Admin
+- Login
+- Mengelola kategori fasilitas
+- Mengelola fasilitas
+- Mengelola akun staff
+
+Seluruh proses pelaporan tersimpan dalam database yang saling berelasi antara users, categories, facilities, reports, dan maintenance_logs sehingga data tetap konsisten, terdokumentasi, dan mudah dikembangkan. 
+
+
+# TECH STACK
+- Node.js
+- Express.js
+- Prisma ORM
+- MySQL
+- JWT Authentication
+- Zod Validation
+- Swagger (OpenAPI)
+
+
+# Local Setup
+
+1. Clone Repository
 ```bash
-git https://github.com/mutiaraaisyshofi/CAMPUS-FACILITY-MAINTENANCE_API.git
+git clone https://github.com/mutiaraaisyshofi/CAMPUS-FACILITY-MAINTENANCE_API.git
 cd CAMPUS-FACILITY-MAINTENANCE_API
+```
+
+2. Install Dependencies
+```bash
+npm install
+```
+
+3. Buat File Environment
+Salin file `.env.example` menjadi `.env`
+```bash
+cp .env.example .env
+```
+atau buat file `.env` secara manual.
+
+4. Isi Environment Variables
+Sesuaikan isi file `.env` dengan konfigurasi database yang digunakan.
+
+5. Generate Prisma Client
+```bash
+npx prisma generate
+```
+6. Push Database Schema
+```bash
+npx prisma db push
+```
+
+7. Jalankan Seed Database
+```bash
+npx prisma db seed
+```
+
+8. Jalankan Server
+```bash
+npm run dev
+```
+
+Aplikasi akan berjalan pada: http://localhost:3000
+Swagger Documentation: http://localhost:3000/api-docs
+
+
+# Environment Variables (.env.example)
+
+Buat file `.env` berdasarkan `.env.example` berikut.
+
+.env
+DATABASE_URL="mysql://username:password@localhost:3306/database_name"
+
+JWT_SECRET=your_jwt_secret
+
+BASE_URL=http://localhost:3000
+
+
+# Deployment
+
+1. Backend API : https://campus-facility-maintenanceapi-production.up.railway.app
+
+2. Swagger Documentation: https://campus-facility-maintenanceapi-production.up.railway.app/api-docs
+
+
+# Default Seed Account
+
+1. Admin
+
+Email: admin.facilitymaintenance@unand.ac.id
+Password: eduadmin.unand
+
+2. Staff
+
+Email: staff.facilitymaintenance@unand.ac.id
+Password: edustaff.unand
+
+
+3. Student
+
+Email: student.mutiaraaisyshofi@unand.ac.id
+Password: mutiaraaisy.student.unand
+
+
+# API Documentation
+
+Swagger UI dapat diakses melalui:
+https://campus-facility-maintenanceapi-production.up.railway.app/api-docs
+
+
+# Features
+
+1. Authentication
+
+- Register
+- Login
+- JWT Authentication
+- Role-Based Authorization
+
+2. Category Management
+
+- Create Category
+- Get All Categories
+- Get Category by ID
+- Update Category
+- Delete Category
+
+3. Facility Management
+
+- Create Facility
+- Get All Facilities
+- Get Facility by ID
+- Update Facility
+- Delete Facility
+
+4. Report Management
+
+- Create Report
+- Get All Reports
+- Get My Reports
+- Update Report Status
+
+
+# Author
+
+Mutiara Aisy Shofi
+
+# Entity Relationship Diagram (ERD)
+

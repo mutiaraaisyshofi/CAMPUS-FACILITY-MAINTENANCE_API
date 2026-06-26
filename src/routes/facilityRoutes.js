@@ -64,13 +64,13 @@ router.get("/:id", facilityController.getFacilityById);
  *             properties:
  *               name:
  *                 type: string
- *                 example: Proyektor Ruang A1.2
+ *                 example: Alat Pemadam Api Ringan (APAR)
  *               location:
  *                 type: string
  *                 example: Gedung A
  *               categoryId:
  *                 type: integer
- *                 example: 1
+ *                 example: 8
  *     responses:
  *       201:
  *         description: Fasilitas berhasil dibuat
@@ -105,13 +105,13 @@ router.get("/:id", facilityController.getFacilityById);
  *             properties:
  *               name:
  *                 type: string
- *                 example: Proyektor Ruang A1.2
+ *                 example: CCTV
  *               location:
  *                 type: string
  *                 example: Gedung A
  *               categoryId:
  *                 type: integer
- *                 example: 1
+ *                 example: 8
  *     responses:
  *       200:
  *         description: Fasilitas berhasil diperbarui

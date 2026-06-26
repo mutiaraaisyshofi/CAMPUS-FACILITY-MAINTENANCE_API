@@ -26,13 +26,13 @@ const authorize = require("../middlewares/authorize");
  *             properties:
  *               title:
  *                 type: string
- *                 example: Proyektor Mati
+ *                 example: CCTV rusak
  *               description:
  *                 type: string
- *                 example: Proyektor tidak dapat dinyalakan saat perkuliahan berlangsung
+ *                 example: Kabel jaringan CCTV terekelupas
  *               facilityId:
  *                 type: integer
- *                 example: 1
+ *                 example: 7
  *     responses:
  *       201:
  *         description: Laporan berhasil dibuat

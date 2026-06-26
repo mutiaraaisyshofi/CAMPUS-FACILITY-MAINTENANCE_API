@@ -10,7 +10,6 @@ const authorize = require("../middlewares/authorize");
 
 const maintenanceLogController = require("../controllers/maintenanceLogController");
 
-
 /**
  * @swagger
  * /maintenance-logs:

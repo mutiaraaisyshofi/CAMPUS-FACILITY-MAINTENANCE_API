@@ -12,8 +12,7 @@ const options = {
 
     servers: [
       {
-        url: "https://facility-maintenance-api-production.up.railway.app",
-        description: "Production Server",
+        url: "https://campus-facility-maintenanceapi-production.up.railway.app/"
       },
     ],
 

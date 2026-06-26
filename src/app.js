@@ -17,6 +17,7 @@ const authRoutes = require("./routes/authRoutes");
 const categoryRoutes = require("./routes/categoryRoutes");
 const facilityRoutes = require("./routes/facilityRoutes");
 const reportRoutes = require("./routes/reportRoutes");
+const maintenanceLogRoutes = require("./routes/maintenanceLogRoutes");
 
 app.use(cors())
 app.use(express.json());
@@ -30,6 +31,10 @@ app.use("/auth", authRoutes);
 app.use("/categories", categoryRoutes);
 app.use("/facilities", facilityRoutes);
 app.use("/reports", reportRoutes);
+app.use(
+  "/maintenance-logs",
+  maintenanceLogRoutes
+);
 
 app.get("/", (req, res) => {
   res.json({

@@ -5,7 +5,7 @@ const createReport = async (data) => {
 };
 
 const getAllReports = async () => {
-  return reportRepository.getAllReports();
+  return reportRepository.getAllReports(query);
 };
 
 const updateReportStatus = async (id, status) => {

@@ -24,12 +24,19 @@ const createReport = async (req, res) => {
 };
 
 const getAllReports = async (req, res) => {
-  const reports = await reportService.getAllReports();
+  try {
+    const reports = await reportService.getAllReports(req.query);
 
-  res.json({
-    success: true,
-    data: reports,
-  });
+    res.json({
+      success: true,
+      data: reports,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
 };
 
 const updateReportStatus = async (req, res) => {

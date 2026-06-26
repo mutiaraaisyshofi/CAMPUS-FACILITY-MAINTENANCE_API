@@ -18,8 +18,10 @@ const categoryRoutes = require("./routes/categoryRoutes");
 const facilityRoutes = require("./routes/facilityRoutes");
 const reportRoutes = require("./routes/reportRoutes");
 const maintenanceLogRoutes = require("./routes/maintenanceLogRoutes");
+const apiLimiter = require("./middlewares/rateLimiter");
 
 app.use(cors())
+app.use(apiLimiter);
 app.use(express.json());
 app.use(
   "/api-docs",

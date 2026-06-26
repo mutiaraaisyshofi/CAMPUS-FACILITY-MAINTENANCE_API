@@ -77,10 +77,47 @@ router.get(
  * @swagger
  * /reports:
  *   get:
- *     summary: Melihat seluruh laporan kerusakan fasilitas
+ *     summary: Mengambil daftar laporan kerusakan fasilitas dengan dukungan filter berdasarkan status, pengurutan data, dan pagination.
  *     tags: [Reports]
  *     security:
  *       - bearerAuth: []
+ *
+ *     parameters:
+ *       - in: query
+ *         name: status
+ *         required: false
+ *         schema:
+ *           type: string
+ *           example: PENDING
+ *         description: Filter laporan berdasarkan status
+ *
+ *       - in: query
+ *         name: sort
+ *         required: false
+ *         schema:
+ *           type: string
+ *           enum:
+ *             - newest
+ *             - oldest
+ *           example: newest
+ *         description: Urutkan laporan berdasarkan tanggal
+ *
+ *       - in: query
+ *         name: page
+ *         required: false
+ *         schema:
+ *           type: integer
+ *           example: 1
+ *         description: Nomor halaman
+ *
+ *       - in: query
+ *         name: limit
+ *         required: false
+ *         schema:
+ *           type: integer
+ *           example: 5
+ *         description: Jumlah data per halaman
+ *
  *     responses:
  *       200:
  *         description: Daftar laporan berhasil diambil

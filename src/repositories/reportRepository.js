@@ -6,13 +6,58 @@ const createReport = async (data) => {
   });
 };
 
-const getAllReports = async () => {
+const getAllReports = async (query) => {
+
+  // FILTER
+
+  const where = {};
+
+  if (query.status) {
+    where.status = query.status;
+  }
+
+  // SORTING
+
+  let orderBy = {
+    createdAt: "desc",
+  };
+
+  if (query.sort === "oldest") {
+    orderBy = {
+      createdAt: "asc",
+    };
+  }
+
+  // PAGINATION
+  
+  const page = Number(query.page) || 1;
+
+  const limit = Number(query.limit) || 5;
+
+  const skip = (page - 1) * limit;
+
+  // QUERY
+ 
   return prisma.report.findMany({
+
+    where,
+
+    orderBy,
+
+    skip,
+
+    take: limit,
+
     include: {
+
       user: true,
+
       facility: true,
+
     },
+
   });
+
 };
 
 const updateReportStatus = async (id, status) => {

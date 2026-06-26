@@ -11,6 +11,7 @@ const { authenticate, } = require("./middlewares/authMiddleware");
 const { success } = require("zod");
 
 const app = express();
+app.set("trust proxy", 1);
 const cors = require("cors")
 
 const authRoutes = require("./routes/authRoutes");

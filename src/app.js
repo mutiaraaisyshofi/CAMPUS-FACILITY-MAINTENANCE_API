@@ -1,16 +1,30 @@
-const express = require("express");
+require('dotenv').config(); 
+console.log("APP STARTED");
+console.log("DATABASE_URL =", process.env.DATABASE_URL);
+
 const swaggerUi = require("swagger-ui-express");
 const swaggerSpec = require("./docs/swagger");
-const authRoutes = require("./routes/authRoutes");
+
+const express = require("express");
+
 const { authenticate, } = require("./middlewares/authMiddleware");
 const { success } = require("zod");
 
 const app = express();
+const cors = require("cors")
+
+const authRoutes = require("./routes/authRoutes");
 const categoryRoutes = require("./routes/categoryRoutes");
 const facilityRoutes = require("./routes/facilityRoutes");
 const reportRoutes = require("./routes/reportRoutes");
 
+app.use(cors())
 app.use(express.json());
+app.use(
+  "/api-docs",
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerSpec)
+);
 
 app.use("/auth", authRoutes);
 app.use("/categories", categoryRoutes);
@@ -33,12 +47,6 @@ app.get(
       user: req.user,
     });
   }
-);
-
-app.use(
-  "/api-docs",
-  swaggerUi.serve,
-  swaggerUi.setup(swaggerSpec)
 );
 
 const PORT = process.env.PORT || 3000;

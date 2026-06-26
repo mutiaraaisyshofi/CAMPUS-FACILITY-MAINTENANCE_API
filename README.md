@@ -39,6 +39,11 @@ Seluruh proses pelaporan tersimpan dalam database yang saling berelasi antara us
 - Swagger (OpenAPI)
 
 
+# Entity Relationship Diagram (ERD)
+
+![ERD](assets/ERD.png)
+
+
 # Local Setup
 
 1. Clone Repository
@@ -122,12 +127,6 @@ Email: student.mutiaraaisyshofi@unand.ac.id
 Password: mutiaraaisy.student.unand
 
 
-# API Documentation
-
-Swagger UI dapat diakses melalui:
-https://campus-facility-maintenanceapi-production.up.railway.app/api-docs
-
-
 # Features
 
 1. Authentication
@@ -160,10 +159,12 @@ https://campus-facility-maintenanceapi-production.up.railway.app/api-docs
 - Get My Reports
 - Update Report Status
 
+5. Maintenance Log Management
+
+- Create Maintenance Log
+- Get Maintenance Logs by Report
+
 
 # Author
 
 Mutiara Aisy Shofi
-
-
-# Entity Relationship Diagram (ERD)

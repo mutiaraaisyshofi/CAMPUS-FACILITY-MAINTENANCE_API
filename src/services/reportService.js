@@ -4,7 +4,7 @@ const createReport = async (data) => {
   return reportRepository.createReport(data);
 };
 
-const getAllReports = async () => {
+const getAllReports = async (query) => {
   return reportRepository.getAllReports(query);
 };
 
